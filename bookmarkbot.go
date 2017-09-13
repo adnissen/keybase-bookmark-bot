@@ -168,7 +168,7 @@ func main() {
 			//do we have an existing bookmark for this url?
 			var existingBk Bookmark
 			db.Where(&Bookmark{Url: bk.Url}).First(&existingBk)
-			if &existingBk != nil { //overwrite it
+			if existingBk.Url != "" { //overwrite it
 				existingBk.Description = bk.Description
 				existingBk.Tags = bk.Tags
 				db.Save(existingBk)
